@@ -8,7 +8,7 @@
 
 
 ## --------------------- Inclusion of Standard Headers ----------------------##
-import sys,time,serial
+import sys,time, serial
 from datetime import datetime
 ## ------------------------ Inclusion of Own Headers ------------------------##
 import HDC1080_Lib
@@ -28,9 +28,12 @@ GPS_Proximidad = GPSProx_Lib.GPS_Prox
 GPIO_TRIGGER_d = 16 # GPIO 23
 GPIO_ECHO_d = 18 # GPIO 24
 
+
 ser = serial.Serial("/dev/ttyAMA0",9600)
 
 while True:
+    print("Este es el estado",state)
+
     if(state==0):#Crear el archivo para guardar los datos
         archi1=open("Datos_Pru_U.txt","w")
         archi1.write("---------------------------------------------------------------------\n") 
@@ -53,33 +56,62 @@ while True:
         state=2
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
-    elif(state==2): #Tomar 30 datos continuos de los sensores(rad y TempHum), 1 dato de Proximidad y 1 dato de GPS
-
+    elif(state==2): #Tomar 30 datos continuos de los sensores(rad y TempHum)
+        
         for i in range(30):
             Temp_data.append(sen_hdc1080.read_Temperature())
             Hum_data.append(sen_hdc1080.read_Humidity())
             ALS_data.append(sen_ltr390.read_ambient_light())
             UV_data.append(sen_ltr390.read_radiation_UV())
-        
-        Prox_1_data=(GPS_Proximidad.distance(GPIO_TRIGGER_d,GPIO_ECHO_d))   
-        
-        received_data = ser.readline()
-        GPS_data = str(received_data)
-        print(GPS_data)
-        #GPS_data_divide = GPS_Proximidad.sym_to_text(GPS_data)
-        GPS_data_divide=["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"]
-
-
-        Data_W_Temp=0
-        Data_W_Hum=0
-        Data_W_ALS=0
-        Data_W_UV=0
-        Data_W_Prox1=0
-
         state=3
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+    elif(state==3):#Tomar dato de proximidad
+
+        Prox_1_data=(GPS_Proximidad.distance(GPIO_TRIGGER_d,GPIO_ECHO_d))   
+        print("Listo dato de Proximidad",Prox_1_data)
+        ready_GPS=0
+        state=4
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#   
+    elif(state==4):#Adquirir dato de GPS
+        received_data = ser.readline()
+        GPS_data = str(received_data)
+        ready_GPS=GPS_Proximidad.conetion_GPS(GPS_data)
+
+        if(ready_GPS==0):
+            GPS_data_divide=["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"]
+
+            Data_W_Temp=0
+            Data_W_Hum=0
+            Data_W_ALS=0
+            Data_W_UV=0
+            Data_W_Prox1=0
+
+            state=5
+
+            
+        else:
+            if GPS_data[2:9] == "$GPRMC,":
+                print(GPS_data)
+                GPS_data_divide = GPS_Proximidad.sym_to_text(GPS_data)
+                 
+                Data_W_Temp=0
+                Data_W_Hum=0
+                Data_W_ALS=0
+                Data_W_UV=0
+                Data_W_Prox1=0
+
+                state=5
+            else:
+                state=4
+               
+        
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
-    elif(state==3): #Calcular el promedio de los datos
+    elif(state==5): #Calcular el promedio de los datos
         
         for i in range(30):
             Data_W_Temp +=Temp_data[i]
@@ -98,11 +130,11 @@ while True:
         else:
             sen_hdc1080.Turn_OFF_Heater()
 
-        state=4
+        state=6
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
-    elif(state==4): #Imprimir datos en la terminal
+    elif(state==6): #Imprimir datos en la terminal
 
         print("-----------------------------------------------------------------------------------")
         print("          Toma de datos --> "+ time.strftime("%Y-%m-%d %H:%M:%S")+"\n") 
@@ -119,11 +151,11 @@ while True:
 
         print("-----------------------------------------------------------------------------------") 
 
-        state=5
+        state=7
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    elif(state==5): #Guardar datos adquiridos por sensores y GPS
+    elif(state==7): #Guardar datos adquiridos por sensores y GPS
         archi1=open("Datos_Pru_U.txt","a")
         archi1.write("          Toma de datos -->  "+ time.strftime("%Y-%m-%d %H:%M:%S")+"\n")
         archi1.write("GPS  "+ GPS_data +"\n") 
@@ -144,11 +176,11 @@ while True:
 
         time_initial=datetime.now()
 
-        state=6
+        state=8
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    elif(state==6):#Verificar la humedad para activar el HEATER y esperar 0 minutos para próxima medida
+    elif(state==8):#Verificar la humedad para activar el HEATER y esperar 0 minutos para próxima medida
         rev_Hum=sen_hdc1080.read_Humidity()
         if(rev_Hum >= 85):
             sen_hdc1080.Turn_ON_Heater()
