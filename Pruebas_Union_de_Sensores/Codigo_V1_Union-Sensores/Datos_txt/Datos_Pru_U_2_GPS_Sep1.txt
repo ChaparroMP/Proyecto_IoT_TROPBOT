@@ -1,0 +1,209 @@
+---------------------------------------------------------------------
+          PRUEBA DE UNIÓN DE LOS SENSORES Y GPS 
+  El programa empezó  -> 2021-09-01 17:29:38
+---------------------------------------------------------------------
+
+          Toma de datos -->  2021-09-01 17:30:07
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:39
+Latitud = 04° 37'63.031,N     Longitud = 74° 03'84.642,W
+
+Distancia                 = 10.136 [cm]
+Temperatura Ambiente      = 19.067 [ºC]
+Humedad Relativa del aire = 62.278 [%]
+Luz Ambiente              = 197.463 [lux]
+Radiación UV              = 49.652 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:30:36
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:40
+Latitud = 04° 37'63.045,N     Longitud = 74° 03'84.645,W
+
+Distancia                 = 12.847 [cm]
+Temperatura Ambiente      = 19.134 [ºC]
+Humedad Relativa del aire = 61.698 [%]
+Luz Ambiente              = 222.398 [lux]
+Radiación UV              = 60.029 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:31:05
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:41
+Latitud = 04° 37'63.062,N     Longitud = 74° 03'84.654,W
+
+Distancia                 = 10.447 [cm]
+Temperatura Ambiente      = 19.193 [ºC]
+Humedad Relativa del aire = 61.003 [%]
+Luz Ambiente              = 256.083 [lux]
+Radiación UV              = 70.667 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:31:34
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:42
+Latitud = 04° 37'63.080,N     Longitud = 74° 03'84.667,W
+
+Distancia                 = 148.038 [cm]
+Temperatura Ambiente      = 19.135 [ºC]
+Humedad Relativa del aire = 60.41 [%]
+Luz Ambiente              = 267.935 [lux]
+Radiación UV              = 75.0 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:32:03
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:43
+Latitud = 04° 37'63.089,N     Longitud = 74° 03'84.673,W
+
+Distancia                 = 11.06 [cm]
+Temperatura Ambiente      = 19.056 [ºC]
+Humedad Relativa del aire = 61.112 [%]
+Luz Ambiente              = 269.023 [lux]
+Radiación UV              = 73.435 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:32:32
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:44
+Latitud = 04° 37'63.099,N     Longitud = 74° 03'84.680,W
+
+Distancia                 = 10.324 [cm]
+Temperatura Ambiente      = 18.998 [ºC]
+Humedad Relativa del aire = 61.369 [%]
+Luz Ambiente              = 265.49 [lux]
+Radiación UV              = 72.942 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:33:01
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:45
+Latitud = 04° 37'63.112,N     Longitud = 74° 03'84.684,W
+
+Distancia                 = 9.777 [cm]
+Temperatura Ambiente      = 19.014 [ºC]
+Humedad Relativa del aire = 61.406 [%]
+Luz Ambiente              = 261.117 [lux]
+Radiación UV              = 71.246 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:33:30
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:46
+Latitud = 04° 37'63.120,N     Longitud = 74° 03'84.685,W
+
+Distancia                 = 10.173 [cm]
+Temperatura Ambiente      = 19.007 [ºC]
+Humedad Relativa del aire = 62.007 [%]
+Luz Ambiente              = 252.685 [lux]
+Radiación UV              = 65.696 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:33:59
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:47
+Latitud = 04° 37'63.130,N     Longitud = 74° 03'84.695,W
+
+Distancia                 = 10.271 [cm]
+Temperatura Ambiente      = 19.025 [ºC]
+Humedad Relativa del aire = 61.493 [%]
+Luz Ambiente              = 215.177 [lux]
+Radiación UV              = 53.101 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:34:28
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:48
+Latitud = 04° 37'63.140,N     Longitud = 74° 03'84.704,W
+
+Distancia                 = 7.307 [cm]
+Temperatura Ambiente      = 19.024 [ºC]
+Humedad Relativa del aire = 61.053 [%]
+Luz Ambiente              = 208.593 [lux]
+Radiación UV              = 49.232 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:34:56
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:49
+Latitud = 04° 37'63.141,N     Longitud = 74° 03'84.709,W
+
+Distancia                 = 9.719 [cm]
+Temperatura Ambiente      = 18.99 [ºC]
+Humedad Relativa del aire = 60.821 [%]
+Luz Ambiente              = 226.335 [lux]
+Radiación UV              = 73.362 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:35:25
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:50
+Latitud = 04° 37'63.131,N     Longitud = 74° 03'84.708,W
+
+Distancia                 = 7.34 [cm]
+Temperatura Ambiente      = 18.951 [ºC]
+Humedad Relativa del aire = 60.724 [%]
+Luz Ambiente              = 263.467 [lux]
+Radiación UV              = 116.058 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:35:54
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:51
+Latitud = 04° 37'63.123,N     Longitud = 74° 03'84.703,W
+
+Distancia                 = 10.357 [cm]
+Temperatura Ambiente      = 18.942 [ºC]
+Humedad Relativa del aire = 60.906 [%]
+Luz Ambiente              = 237.457 [lux]
+Radiación UV              = 90.174 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:36:23
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:52
+Latitud = 04° 37'63.123,N     Longitud = 74° 03'84.703,W
+
+Distancia                 = 10.373 [cm]
+Temperatura Ambiente      = 18.997 [ºC]
+Humedad Relativa del aire = 61.283 [%]
+Luz Ambiente              = 201.183 [lux]
+Radiación UV              = 67.348 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:36:52
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:53
+Latitud = 04° 37'63.118,N     Longitud = 74° 03'84.702,W
+
+Distancia                 = 11.146 [cm]
+Temperatura Ambiente      = 19.027 [ºC]
+Humedad Relativa del aire = 61.07 [%]
+Luz Ambiente              = 187.45 [lux]
+Radiación UV              = 55.304 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:37:21
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:54
+Latitud = 04° 37'63.114,N     Longitud = 74° 03'84.700,W
+
+Distancia                 = 10.754 [cm]
+Temperatura Ambiente      = 19.048 [ºC]
+Humedad Relativa del aire = 61.072 [%]
+Luz Ambiente              = 228.642 [lux]
+Radiación UV              = 108.826 [nW/cm^2]
+---------------------------------------------------------------------
+          Toma de datos -->  2021-09-01 17:37:50
+GPS  '
+Fecha = 01/09/21
+Hora=17:29:55
+Latitud = 04° 37'63.115,N     Longitud = 74° 03'84.695,W
+
+Distancia                 = 10.627 [cm]
+Temperatura Ambiente      = 18.939 [ºC]
+Humedad Relativa del aire = 61.83 [%]
+Luz Ambiente              = 427.155 [lux]
+Radiación UV              = 324.246 [nW/cm^2]
+---------------------------------------------------------------------
