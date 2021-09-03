@@ -36,7 +36,7 @@
 import time
 from time import sleep
 import RPi.GPIO as GPIO
-
+from datetime import datetime
 
 GPIO.setwarnings(False)
 
@@ -50,7 +50,39 @@ class GPS_Prox:
 
 ##FN############################################################################
 #
-#   sym_to_text(self,data);
+#   conetion_GPS(data_GPS);
+#
+#   Return:  -----
+#
+#   Purpose: -----
+#
+#   Plan
+#           Part 1: --
+#           Part 2: ---
+#           Part 3: ---
+#           Part 4: ---- 
+#
+#   Register of Revisions (Debugging Process):
+#
+#   DATE       RESPONSIBLE  			COMMENT
+#   -----------------------------------------------------------------------
+# 	Aug.26    L.Castillo,P.Chaparro     Initial implementation
+#              & J. Varón
+#################################################################################/
+    def conetion_GPS(data_GPS):
+        if data_GPS[2:9] == "$GPRMC,":
+            if data_GPS[8:10] == ",,":
+                print("No se pudo conectar con la antena ")
+                return 0
+            else:
+                return 1
+            
+
+
+
+##FN############################################################################
+#
+#   sym_to_text(data);
 #
 #   Return:  -----
 #
@@ -117,8 +149,8 @@ class GPS_Prox:
                         #-------------------------------------------------------------------------
 
                         GPS_vect_data=[local_hour, minute, second, deg, minn,sec,mils,coord, grados, min_l,sec_l,mils_l,coord_l,
-                                       dd,mm,yy]
-                        return GPS_vect_data
+                                    dd,mm,yy]
+            return GPS_vect_data
 
 
 
@@ -153,26 +185,28 @@ class GPS_Prox:
         GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
         GPIO.setup(GPIO_ECHO, GPIO.IN)
         
-        #* Part 2: Set trigger to HIGH
+        #set trigger to HIGH
         GPIO.output(GPIO_TRIGGER, True)
         
-        #* Part 3: Set trigger after 0.01ms to LOW
+        #set trigger after 0.01ms to LOW
         time.sleep(0.00001)
         GPIO.output(GPIO_TRIGGER, False)
-     
-        #* Part 4: Save StartTime
+        
+        StartTime = time.time()
+        StopTime = time.time()
+        
+        # save StartTime
         while GPIO.input(GPIO_ECHO) == 0:
             StartTime = time.time()
             
-        #* Part 5: Save time of arrival
+        # save of arrival
         while GPIO.input(GPIO_ECHO) == 1:
             StopTime = time.time()
         
-        #* Part 6: Time difference between start and arrival
+        # time difference between start and arrival
         TimeElapsed = StopTime - StartTime
-
-        #* Part 7: Multiply by the sonic speed (34300 cm/s)
-        #          divied by 2 because there and back
+        # multiply with (by?) the sonic speed (34300 cm/s)
+        #divied by 2 because there and back
         distance = (TimeElapsed * 34300) / 2
         
         return distance
