@@ -64,6 +64,10 @@ background:#53a7ea;
 	background:  #309465c5;
 	color: #fff;
 	grid-area: footer;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media screen and (max-width: 768px){

@@ -416,6 +416,10 @@ img {
   border-radius : 50% ;
 }
 
+.little_imag_1 img:hover{
+  border-radius : 50% ;
+}
+
 #lista3 {
     counter-reset: li; 
     list-style: none; 
@@ -2897,6 +2901,9 @@ img {
 
 .portfolio-details-meta {
   position: relative;
+  width:"1000px";
+  height:"553px";
+  object-fit: cover;
   z-index: 1;
   margin-bottom: 25px; }
   .portfolio-details-meta h5 {
