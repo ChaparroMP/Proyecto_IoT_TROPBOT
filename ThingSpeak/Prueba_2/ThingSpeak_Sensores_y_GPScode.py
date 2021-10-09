@@ -1,7 +1,7 @@
 from __future__ import print_function
 import paho.mqtt.publish as publish
 from time import sleep
-import smbus
+import smbus,serial,time
 import sys
 
 ## ------------------------ Inclusion of Own Headers ------------------------##
@@ -12,9 +12,9 @@ import GPSProx_Lib
 ################################################################################
 #------------------------------------------------------------------------------#
 
-channelID = "1497497"  #Enter your Channel ID here
+channelID = "1497567"  #Enter your Channel ID here
 
-apiKey = "JZJQF8VET03WKQNX"  #Enter your WriteAPI key here
+apiKey = "NEIDSS2DZHB3PS3W "  #Enter your WriteAPI key here
 
 
 useUnsecuredTCP = False
@@ -72,6 +72,8 @@ humidity = ""
 #------------------------------------------------------------------------------#
 
 while(True):
+    print(state)
+
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if(state==0):#Colocar los vectores en cero
@@ -192,11 +194,11 @@ while(True):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     elif(state==7): #Imprimir datos en ThingSpeak
 
-        tPayload = "field1=" + str(Data_W_Temp) + "&field2=" + str(Data_W_Hum) + "&field3=" + str(Data_W_ALS)+ "&field4=" + str(Data_W_Prox1)+"&field5=" + + GPS_data_divide[3] + "° " + GPS_data_divide[4] + "'" + GPS_data_divide[5] + "." + GPS_data_divide[6] + GPS_data_divide[7]+"&field6="+GPS_data_divide[8] + "° " + GPS_data_divide[9] + "'" + GPS_data_divide[10] + "." + GPS_data_divide[11] + "," + GPS_data_divide[12]
+        tPayload = "field1=" + str(Data_W_Temp) + "&field2=" + str(Data_W_Hum) + "&field3=" + str(Data_W_ALS)+ "&field4=" + str(Data_W_Prox1)+"&field5=" + GPS_data_divide[3] + "° " + GPS_data_divide[4] + "'" + GPS_data_divide[5] + "." + GPS_data_divide[6] + GPS_data_divide[7]+"&field6="+GPS_data_divide[8] + "° " + GPS_data_divide[9] + "'" + GPS_data_divide[10] + "." + GPS_data_divide[11] + "," + GPS_data_divide[12]
 
         try:
             publish.single(topic, payload=tPayload, hostname=mqttHost, port=tPort, tls=tTLS, transport=tTransport)
-
+            state=0
         except (KeyboardInterrupt):
             break
 
@@ -204,7 +206,6 @@ while(True):
             print ("There was an error while publishing the data.")
 
 
-        state=1
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           
