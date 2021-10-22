@@ -70,7 +70,7 @@ humidity = ""
 
 ################################################################################
 #------------------------------------------------------------------------------#
-
+x = 1
 while(x == 1):
     print(state)
 
@@ -199,7 +199,7 @@ while(x == 1):
         try:
             publish.single(topic, payload=tPayload, hostname=mqttHost, port=tPort, tls=tTLS, transport=tTransport)
             state=0
-            x=1
+            x=0
         except (KeyboardInterrupt):
             break
 
